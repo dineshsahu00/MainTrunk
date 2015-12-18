@@ -1,11 +1,13 @@
 package edrix.main.student;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Random;
 import java.util.Set;
 
 import com.google.gwt.thirdparty.guava.common.eventbus.Subscribe;
@@ -47,7 +49,8 @@ import edrix.main.commons.Scores;
 
 @SuppressWarnings({ "serial", "unchecked" })
 public final class ScoresView extends VerticalLayout implements View {
-
+	public static final float MAX = 1.0f;
+	public static final float MIN = 0.01f;
     private final Table table;
     private Button calculateScore;
     private static final DateFormat DATEFORMAT = new SimpleDateFormat(
@@ -303,10 +306,31 @@ public final class ScoresView extends VerticalLayout implements View {
     private BeanContainer<Date,Scores> getScoreContainer()  {
     	BeanContainer<Date,Scores> dataModel = new BeanContainer<Date,Scores>(Scores.class);
     	dataModel.setBeanIdProperty("recordDate");
-    	Scores scoreBean = new Scores(Calendar.getInstance().getTime(),2,4,3,6,7,2,5,6,4,3,2);
-    	dataModel.addBean(scoreBean);
+    	Random rand = new Random();
+    	for(int counter =1;counter<100;counter++){
+    		
+    		Date recordDate =Calendar.getInstance().getTime();
+    		Calendar cal = Calendar.getInstance();
+    		cal.setTime(recordDate);
+    		cal.add(Calendar.DATE, -(counter*100));
+    		Date newRecordDate = cal.getTime();
+    		Scores scoreBean = new Scores(newRecordDate,
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue(),
+    				new BigDecimal(rand.nextFloat()*((MAX+MIN))*10).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()
+    				);
+    		dataModel.addBean(scoreBean);
+    	}
+    	
        return dataModel;
-
     }
 
 }

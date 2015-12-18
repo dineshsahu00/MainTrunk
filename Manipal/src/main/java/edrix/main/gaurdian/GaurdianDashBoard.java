@@ -31,6 +31,7 @@ public class GaurdianDashBoard extends HorizontalLayout implements View {
         content.addStyleName("view-content");
         content.setSizeFull();
         addComponent(content);
-        setExpandRatio(content, 1.0f);	
+        setExpandRatio(content, 1.0f);
+        new GaurdianViewNavigator(content);
 	}
 }

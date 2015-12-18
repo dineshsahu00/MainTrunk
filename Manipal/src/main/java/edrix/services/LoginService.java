@@ -6,7 +6,7 @@ public class LoginService {
 
 	public boolean validateStudentLogin(LoginDto loginDto){
 		boolean loginFlag = Boolean.TRUE;
-		return loginFlag;
+		return loginDto.getUserId().equalsIgnoreCase("dineshsahu")&&loginDto.getPassword().equalsIgnoreCase("password");
 	}
 	
 	public boolean validateGaurdianLogin(LoginDto loginDto){

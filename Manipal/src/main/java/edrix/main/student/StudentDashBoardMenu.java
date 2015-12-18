@@ -35,6 +35,11 @@ public class StudentDashBoardMenu extends CustomComponent {
 	
 	private Label notificationsBadge;
     private Label reportsBadge;
+    private Label performancesBadge;
+    private Label scoresBadge;
+    private Label interfacesbadge;
+    private Label profileBadge;
+    private Label eventsBadge;
     private MenuItem settingsItem;
 	
 	public StudentDashBoardMenu(){
@@ -170,6 +175,40 @@ public class StudentDashBoardMenu extends CustomComponent {
 	                reportsBadge.setId(REPORTS_BADGE_ID);
 	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
 	                        reportsBadge);
+	            }
+	            if (view == StudentDashboardViewType.PERFORMANCES) {
+	                performancesBadge = new Label();
+	                performancesBadge.setId(REPORTS_BADGE_ID);
+	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
+	                		performancesBadge);
+	            }
+	            
+	            if (view == StudentDashboardViewType.REPORTS) {
+	                scoresBadge = new Label();
+	                scoresBadge.setId(REPORTS_BADGE_ID);
+	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
+	                		scoresBadge);
+	            }
+	            
+	            if (view == StudentDashboardViewType.INTERFACES) {
+	                interfacesbadge = new Label();
+	                interfacesbadge.setId(REPORTS_BADGE_ID);
+	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
+	                		interfacesbadge);
+	            }
+	            
+	            if (view == StudentDashboardViewType.PROFILES) {
+	                profileBadge = new Label();
+	                profileBadge.setId(REPORTS_BADGE_ID);
+	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
+	                		profileBadge);
+	            }
+	            
+	            if (view == StudentDashboardViewType.EVENTS) {
+	            	eventsBadge = new Label();
+	            	eventsBadge.setId(REPORTS_BADGE_ID);
+	                menuItemComponent = buildBadgeWrapper(menuItemComponent,
+	                		eventsBadge);
 	            }
 
 	            menuItemsLayout.addComponent(menuItemComponent);

@@ -6,7 +6,12 @@ import com.vaadin.server.Resource;
 
 public enum StudentDashboardViewType {
     DASHBOARD("dashboard", StudentDashboardView.class, FontAwesome.HOME, true),
-    SCORES("scores", ScoresView.class, FontAwesome.TABLE,false);
+    SCORES("scores", ScoresView.class, FontAwesome.TABLE,false),
+    PERFORMANCES("performances",PerformancesView.class,FontAwesome.BARCODE,false),
+    REPORTS("reports",ReportsView.class,FontAwesome.FILE_TEXT,false),
+    INTERFACES("interfaces",InterFacesView.class,FontAwesome.BRIEFCASE,false),
+    PROFILES("profiles",ProfileView.class,FontAwesome.PENCIL,false),
+    EVENTS("events",EventsView.class,FontAwesome.EYE,false);
 
     private final String viewName;
     private final Class<? extends View> viewClass;

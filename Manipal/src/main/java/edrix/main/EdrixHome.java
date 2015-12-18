@@ -1,5 +1,7 @@
 package edrix.main;
 
+import javax.management.NotificationFilter;
+
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -265,6 +267,12 @@ public class EdrixHome extends GridLayout implements View {
 				User student = createStudentUser(loginDto);
 				VaadinSession.getCurrent().setAttribute(User.class.getName(),student);
 				if(sucessFlag){
+					 try {
+				            Thread.sleep(2000) ;
+				        } catch (InterruptedException e) {
+				            // TODO Auto-generated catch block
+				           Notification.show("Error in Login Thread");
+				        }
 					StudentDashBoard studentDashBoard= new StudentDashBoard();
 					navigator.addView(STUDENT_DASHBOARD, studentDashBoard);
 					navigator.navigateTo(STUDENT_DASHBOARD);

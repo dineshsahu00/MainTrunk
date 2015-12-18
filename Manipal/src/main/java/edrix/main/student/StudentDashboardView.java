@@ -100,7 +100,7 @@ public final class StudentDashboardView extends Panel implements View,
         sparks.addStyleName("sparks");
         sparks.setWidth("100%");
         Responsive.makeResponsive(sparks);
-        sparks.addComponent(new Image(null, new ThemeResource("images/sparks.jpg")));
+        sparks.addComponent(createContentWrapper(new Image(null, new ThemeResource("images/sparks.jpg"))));
         return sparks;
     }
 

@@ -37,6 +37,7 @@ public class ProfilePreferencesWindow extends Window {
 
     public static final String ID = "profilepreferenceswindow";
 
+    private static boolean isGaurdianFlag = false;
     private final BeanFieldGroup<User> fieldGroup;
     /*
      * Fields for editing the User object are defined here as class members.
@@ -132,8 +133,15 @@ public class ProfilePreferencesWindow extends Window {
         VerticalLayout pic = new VerticalLayout();
         pic.setSizeUndefined();
         pic.setSpacing(true);
-        Image profilePic = new Image(null, new ThemeResource(
-                "images/student_pic.jpg"));
+        Image profilePic = null;
+        if(isGaurdianFlag){
+        	 profilePic = new Image(null, new ThemeResource(
+                    "images/profile-pic-300px.jpg"));
+        }else{
+        	 profilePic = new Image(null, new ThemeResource(
+                    "images/student_pic.jpg"));	
+        }
+        
         profilePic.setWidth(100.0f, Unit.PIXELS);
         pic.addComponent(profilePic);
 
@@ -257,6 +265,13 @@ public class ProfilePreferencesWindow extends Window {
 
     public static void open(final User user, final boolean preferencesTabActive) {
         //DashboardEventBus.post(new CloseOpenWindowsEvent());
+        Window w = new ProfilePreferencesWindow(user, preferencesTabActive);
+        UI.getCurrent().addWindow(w);
+        w.focus();
+    }
+    public static void open(final User user, final boolean preferencesTabActive,boolean isGaurdian) {
+        //DashboardEventBus.post(new CloseOpenWindowsEvent());
+    	isGaurdianFlag = isGaurdian;
         Window w = new ProfilePreferencesWindow(user, preferencesTabActive);
         UI.getCurrent().addWindow(w);
         w.focus();
